@@ -16,7 +16,6 @@ project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - `monitorNextTick` option to the `collectDefaultMetrics()` config. It enables collection of two metrics listed below
-- `nodejs_tick_count` counts number of ticks executed by process.nextTick().
 - `nodejs_tick_duration_summary` counts 0.5, 0.75, 0.9, 0.99 percentiles of tick execution time (in seconds).
 
 - `nodejs_gc_runs` metric to the `collectDefaultMetrics()`. It counts number of GC runs with split by GC type.

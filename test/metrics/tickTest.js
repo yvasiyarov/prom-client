@@ -32,19 +32,13 @@ describe('tick', () => {
 		}
 
 		if (perf_hooks && async_hooks) {
-			expect(metrics).toHaveLength(2);
+			expect(metrics).toHaveLength(1);
 
 			expect(metrics[0].help).toEqual(
-				'NO callbacks executed by procecc.nextTick()'
-			);
-			expect(metrics[0].type).toEqual('counter');
-			expect(metrics[0].name).toEqual('nodejs_tick_count');
-
-			expect(metrics[1].help).toEqual(
 				'Summary of callbacks executed by procecc.nextTick()'
 			);
-			expect(metrics[1].type).toEqual('summary');
-			expect(metrics[1].name).toEqual('nodejs_tick_duration_summary');
+			expect(metrics[0].type).toEqual('summary');
+			expect(metrics[0].name).toEqual('nodejs_tick_duration_summary');
 		} else {
 			expect(metrics).toHaveLength(0);
 		}
