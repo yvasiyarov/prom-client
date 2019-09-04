@@ -48,6 +48,14 @@ setInterval(() => {
 }, 2000);
 
 setInterval(() => {
+	c.inc();
+	function exampleSetImmediate() {
+		c.inc();
+	}
+	setImmediate(exampleSetImmediate);
+}, 2000);
+
+setInterval(() => {
 	g.set({ method: 'get', code: 200 }, Math.random());
 	g.set(Math.random());
 	g.labels('post', '300').inc();
@@ -84,7 +92,10 @@ server.get('/metrics/counter', (req, res) => {
 });
 
 //Enable collection of default metrics
-require('../').collectDefaultMetrics();
+require('../').collectDefaultMetrics({
+	monitorNextTick: true,
+	monitorImmediate: true
+});
 
 console.log('Server listening to 3000, metrics exposed on /metrics endpoint');
 server.listen(3000);
